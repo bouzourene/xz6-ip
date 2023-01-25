@@ -6,8 +6,9 @@ use Spatie\Dns\Dns;
 
 class Home extends BaseController
 {
-	public function index()
-	{
+	private $ip, $reverse;
+
+	private function getIpInfo() {
 		$ip = $this->request->getIPAddress();
 
 		if (str_contains($ip, '.')) {
@@ -38,6 +39,14 @@ class Home extends BaseController
 			$reverse = substr($reverse, 0, -1);
 		}
 
+		$this->ip = $ip;
+		$this->reverse = $reverse;
+	}
+
+	public function index()
+	{
+		$this->getIpInfo();
+
 		try {
 			$bing = new \grubersjoe\BingPhoto();
 			$background = $bing->getImage();
@@ -47,9 +56,45 @@ class Home extends BaseController
 
 	
 		return $this->twig->display('home', [
-			'ip' => $ip,
-			'reverse' => $reverse,
+			'ip' => $this->ip,
+			'reverse' => $this->reverse,
 			'background' => $background
 		]);
+	}
+
+	public function json()
+	{
+		$this->getIpInfo();
+
+		return $this->response->setJSON([
+			'ip' => $this->ip,
+			'reverse' => $this->reverse
+		]);
+	}
+
+	public function xml()
+	{
+		$this->getIpInfo();
+
+		return $this->response->setXML([
+			'ip' => $this->ip,
+			'reverse' => $this->reverse
+		]);
+	}
+
+	public function ip()
+	{
+		$this->getIpInfo();
+
+		$this->response->setContentType('text/plain');
+		echo "{$this->ip}\n";
+	}
+
+	public function reverse()
+	{
+		$this->getIpInfo();
+
+		$this->response->setContentType('text/plain');
+		echo "{$this->reverse}\n";
 	}
 }

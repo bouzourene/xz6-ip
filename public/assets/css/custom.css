@@ -12,3 +12,11 @@ footer a:hover,
 footer a:active {
 	color: #fff;
 }
+
+.table-api td {
+	padding: 0;
+}
+
+.table-api tr {
+	border-color: transparent;
+}

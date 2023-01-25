@@ -31,6 +31,12 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// API
+$routes->get('/json', 'Home::json');
+$routes->get('/xml', 'Home::xml');
+$routes->get('/ip', 'Home::ip');
+$routes->get('/reverse', 'Home::reverse');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
