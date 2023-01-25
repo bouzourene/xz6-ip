@@ -1,0 +1,14 @@
+footer {
+	text-align: left !important;
+	font-size: 12px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #6c757d;
+}
+
+footer a:hover,
+footer a:active {
+	color: #fff;
+}
