@@ -1,0 +1,39 @@
+{% extends "layout.twig" %}
+
+{% block content %}	
+<div class="card mt-5 mx-auto bg-dark" style="max-width: 700px;">
+	<div class="card-body text-light text-center">
+		<h5 class="card-title">My IP address</h5>
+		<div class="card-text mt-4">
+			<span class="h1">
+				{{ ip }}
+			</span>
+			<br>
+			<span class="h4 text-muted">
+				{{ reverse }}
+			</span>
+
+
+			<footer class="mt-4 text-center text-muted">
+				<i class="fa-solid fa-code"></i>
+				<a target="blank" href="https://bzrn.ch">
+					&copy; {{ "now"|date('Y') }} William Bouzourène
+				</a> 
+				<br>
+				<i class="fa-solid fa-camera"></i>
+				<a target="blank" href="{{ background.copyrightlink }}">
+						{{ background.copyright }}
+					</a> 
+			</footer>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block styles %}
+<style>
+	body {
+		background-image: url({{ background.url }});
+	}
+</style>
+{% endblock %}
