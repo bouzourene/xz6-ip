@@ -13,17 +13,19 @@
 				{{ reverse }}
 			</span>
 
-
 			<footer class="mt-4 text-center text-muted">
-				<i class="fa-solid fa-code"></i>
+				<i class="fa-solid fa-code me-1"></i>
 				<a target="blank" href="https://bzrn.ch">
 					&copy; {{ "now"|date('Y') }} William Bouzourène
-				</a> 
+				</a>
+				
+				{% if background is not null %}
 				<br>
-				<i class="fa-solid fa-camera"></i>
+				<i class="fa-solid fa-camera me-1"></i>
 				<a target="blank" href="{{ background.copyrightlink }}">
-						{{ background.copyright }}
-					</a> 
+					{{ background.copyright }}
+				</a> 
+				{% endif %}
 			</footer>
 		</div>
 	</div>
@@ -31,9 +33,17 @@
 {% endblock content %}
 
 {% block styles %}
+{% if background is not null %}
 <style>
 	body {
 		background-image: url({{ background.url }});
 	}
 </style>
+{% else %}
+<style>
+	body {
+		background-color: #eee;
+	}
+</style>
+{% endif %}
 {% endblock %}

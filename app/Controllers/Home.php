@@ -38,8 +38,13 @@ class Home extends BaseController
 			$reverse = substr($reverse, 0, -1);
 		}
 
-		$bing = new \grubersjoe\BingPhoto();
-		$background = $bing->getImage();
+		try {
+			$bing = new \grubersjoe\BingPhoto();
+			$background = $bing->getImage();
+		} catch(Exception $e) {
+			$background = null;
+		}
+
 	
 		return $this->twig->display('home', [
 			'ip' => $ip,
