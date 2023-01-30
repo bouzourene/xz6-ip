@@ -10,6 +10,7 @@ class Home extends BaseController
 
 	private function getIpInfo() {
 		$ip = $this->request->getIPAddress();
+		$ip = "2001:4860:4860::1111";
 
 		if (str_contains($ip, '.')) {
 			$arpa = explode('.', $ip);
@@ -29,10 +30,15 @@ class Home extends BaseController
 		$dns = new Dns();
 		try {
 			$reverse = $dns->getRecords($arpa, 'PTR');
+		} catch (Exception $e) {
+			$reverse = "";
+		}
+
+		if (empty($reverse)) {
+			$reverse = "";
+		} else {
 			$reverse = end($reverse);
 			$reverse = $reverse->target();
-		} catch (Exception $e) {
-			$reverse = null;
 		}
 
 		if ($reverse && str_ends_with($reverse, '.')) {
