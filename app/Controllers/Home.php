@@ -10,7 +10,6 @@ class Home extends BaseController
 
 	private function getIpInfo() {
 		$ip = $this->request->getIPAddress();
-		$ip = "2001:4860:4860::1111";
 
 		if (str_contains($ip, '.')) {
 			$arpa = explode('.', $ip);
