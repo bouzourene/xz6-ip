@@ -29,7 +29,7 @@ class Home extends BaseController
 		$dns = new Dns();
 		try {
 			$reverse = $dns->getRecords($arpa, 'PTR');
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			$reverse = "";
 		}
 
@@ -55,7 +55,7 @@ class Home extends BaseController
 		try {
 			$bing = new \grubersjoe\BingPhoto();
 			$background = $bing->getImage();
-		} catch(Exception $e) {
+		} catch(\Exception $e) {
 			$background = null;
 		}
 
