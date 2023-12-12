@@ -1,0 +1,40 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: #4d5053;
+}
+
+footer {
+	text-align: left !important;
+	font-size: 12px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #6c757d;
+}
+
+footer a:hover,
+footer a:active {
+	color: #fff;
+}
+
+.table-api td {
+	padding: 0;
+}
+
+.table-api tr {
+	border-color: transparent;
+}
+
+.clipboard {
+	cursor: pointer;
+}
+
+.clipboard:hover,
+.clipboard:active {
+	color: var(--bs-code-color) !important;
+}
