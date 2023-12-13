@@ -6,9 +6,8 @@ $(document).ready(function() {
 		var copyright = result.images[0].copyright;
 		var copyrightLink = result.images[0].copyrightlink;
 
-		$("body").css("background-cover", "cover");
 		$("body").css("background", "url('" + imageUrl + "') no-repeat center center fixed");
-
+		
 		$("#copyright a").attr("href", copyrightLink);
 		$("#copyright a").html(copyright);
 		$("#copyright").removeClass("d-none");
