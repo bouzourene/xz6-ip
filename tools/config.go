@@ -14,6 +14,7 @@ func LoadConfig() {
 	viper.SetDefault("BIND_PORT", "3000")
 	viper.SetDefault("ADDRESS_IPV4", "")
 	viper.SetDefault("ADDRESS_IPV6", "")
+	viper.SetDefault("BEHIND_PROXY", "false")
 }
 
 func ConfigValue(key string) string {

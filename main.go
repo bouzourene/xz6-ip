@@ -34,10 +34,18 @@ func main() {
 		".jet",
 	)
 
-	// Create webapp
-	app := fiber.New(fiber.Config{
+	// Generate webapp config
+	appConfig := fiber.Config{
 		Views: engine,
-	})
+	}
+
+	// If app behind proxy, use headers for IP
+	if tools.ConfigValue("BEHIND_PROXY") == "true" {
+		appConfig.ProxyHeader = fiber.HeaderXForwardedFor
+	}
+
+	// Create webapp with config
+	app := fiber.New(appConfig)
 
 	// Add global vars to template engine
 	engine.Templates.AddGlobal("copyright_year", time.Now().Year())
